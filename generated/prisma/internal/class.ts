@@ -19,8 +19,8 @@ const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
   "clientVersion": "7.5.0",
   "engineVersion": "280c870be64f457428992c43c1f6d557fab6e29e",
-  "activeProvider": "sqlite",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Client {\n  id       Int            @id @default(autoincrement())\n  name     String\n  theme    String\n  created  DateTime       @default(now())\n  sessions Session[]\n  journals Journal[]\n  family   FamilyMember[]\n}\n\nmodel Session {\n  id       Int      @id @default(autoincrement())\n  clientId Int\n  date     DateTime\n  summary  String\n  client   Client   @relation(fields: [clientId], references: [id])\n}\n\nmodel Journal {\n  id       Int      @id @default(autoincrement())\n  clientId Int\n  emotion  String\n  text     String\n  created  DateTime @default(now())\n  client   Client   @relation(fields: [clientId], references: [id])\n}\n\nmodel FamilyMember {\n  id       Int    @id @default(autoincrement())\n  clientId Int\n  name     String\n  relation String\n  client   Client @relation(fields: [clientId], references: [id])\n}\n",
+  "activeProvider": "postgresql",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Client {\n  id       Int            @id @default(autoincrement())\n  name     String\n  theme    String\n  created  DateTime       @default(now())\n  sessions Session[]\n  journals Journal[]\n  family   FamilyMember[]\n}\n\nmodel Session {\n  id       Int      @id @default(autoincrement())\n  clientId Int\n  date     DateTime\n  summary  String\n  client   Client   @relation(fields: [clientId], references: [id])\n}\n\nmodel Journal {\n  id       Int      @id @default(autoincrement())\n  clientId Int\n  emotion  String\n  text     String\n  created  DateTime @default(now())\n  client   Client   @relation(fields: [clientId], references: [id])\n}\n\nmodel FamilyMember {\n  id       Int    @id @default(autoincrement())\n  clientId Int\n  name     String\n  relation String\n  client   Client @relation(fields: [clientId], references: [id])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -45,10 +45,10 @@ async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Modul
 }
 
 config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.sqlite.mjs"),
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.mjs"),
 
   getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.sqlite.wasm-base64.mjs")
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.mjs")
     return await decodeBase64AsWasm(wasm)
   },
 

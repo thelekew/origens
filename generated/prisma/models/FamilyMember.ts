@@ -402,6 +402,7 @@ export type FamilyMemberCreateOrConnectWithoutClientInput = {
 
 export type FamilyMemberCreateManyClientInputEnvelope = {
   data: Prisma.FamilyMemberCreateManyClientInput | Prisma.FamilyMemberCreateManyClientInput[]
+  skipDuplicates?: boolean
 }
 
 export type FamilyMemberUpsertWithWhereUniqueWithoutClientInput = {
@@ -1169,6 +1170,7 @@ export type FamilyMemberCreateManyArgs<ExtArgs extends runtime.Types.Extensions.
    * The data used to create many FamilyMembers.
    */
   data: Prisma.FamilyMemberCreateManyInput | Prisma.FamilyMemberCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1187,6 +1189,7 @@ export type FamilyMemberCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * The data used to create many FamilyMembers.
    */
   data: Prisma.FamilyMemberCreateManyInput | Prisma.FamilyMemberCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

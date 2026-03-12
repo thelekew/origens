@@ -2,13 +2,14 @@
   "name": "origens-app",
   "version": "0.1.0",
   "private": true,
- "scripts": {
-  "dev": "next dev",
-  "build": "prisma generate && next build",
-  "start": "next start"
-},
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start"
+  },
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.5.0",
+    "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "bcrypt": "^6.0.0",
     "better-sqlite3": "^12.6.2",
@@ -16,6 +17,7 @@
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
+    "pg": "^8.20.0",
     "prisma": "^7.5.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"

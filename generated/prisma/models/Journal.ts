@@ -426,6 +426,7 @@ export type JournalCreateOrConnectWithoutClientInput = {
 
 export type JournalCreateManyClientInputEnvelope = {
   data: Prisma.JournalCreateManyClientInput | Prisma.JournalCreateManyClientInput[]
+  skipDuplicates?: boolean
 }
 
 export type JournalUpsertWithWhereUniqueWithoutClientInput = {
@@ -1204,6 +1205,7 @@ export type JournalCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * The data used to create many Journals.
    */
   data: Prisma.JournalCreateManyInput | Prisma.JournalCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1222,6 +1224,7 @@ export type JournalCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many Journals.
    */
   data: Prisma.JournalCreateManyInput | Prisma.JournalCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
