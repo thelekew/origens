@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Client {
+  id       Int            @id @default(autoincrement())
+  name     String
+  theme    String
+  created  DateTime       @default(now())
+  sessions Session[]
+  journals Journal[]
+  family   FamilyMember[]
+}
+
+model Session {
+  id       Int      @id @default(autoincrement())
+  clientId Int
+  date     DateTime
+  summary  String
+  client   Client   @relation(fields: [clientId], references: [id])
+}
+
+model Journal {
+  id       Int      @id @default(autoincrement())
+  clientId Int
+  emotion  String
+  text     String
+  created  DateTime @default(now())
+  client   Client   @relation(fields: [clientId], references: [id])
+}
+
+model FamilyMember {
+  id       Int      @id @default(autoincrement())
+  clientId Int
+  name     String
+  relation String
+  client   Client   @relation(fields: [clientId], references: [id])
+}

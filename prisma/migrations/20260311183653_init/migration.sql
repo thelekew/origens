@@ -1,0 +1,23 @@
+-- CreateTable
+CREATE TABLE "Client" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "theme" TEXT NOT NULL,
+    "created" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "Session" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "clientId" INTEGER NOT NULL,
+    "date" DATETIME NOT NULL,
+    "summary" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Journal" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "emotion" TEXT NOT NULL,
+    "text" TEXT NOT NULL,
+    "created" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
